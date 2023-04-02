@@ -277,6 +277,15 @@
             justify-content: space-around;
             align-items: center;
             padding: 15px 0 15px 0;
+            a {
+                font-family: "Inter";
+                font-style: normal;
+                font-weight: 600;
+                font-size: 12px;
+                line-height: 15px;
+                text-decoration: none;
+                color: #3f4e65;
+            }
             .content__third-item {
                 img {
                     width: 15px;

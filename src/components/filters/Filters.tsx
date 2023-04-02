@@ -46,7 +46,7 @@ const Filters: FC = () => {
 
     const brandsRedux = useAppSelector(state => state.filterReducer.brand)
 
-    const [showBlock, setShowBlock] = useState(false)
+    const [showBlock, setShowBlock] = useState(true)
 
     const sortedProductsRedux = useAppSelector(state => state.filterReducer.filteredProducts)
     const filterTypeRedux = useAppSelector(state => state.filterReducer.type)

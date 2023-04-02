@@ -44,8 +44,34 @@
         margin-bottom: 20px;
     }
 }
+.admin__navigate-desctop {
+    display: block;
+}
+.admin__navigate-mobil {
+    display: none;
+}
 @media (max-width: 1420px) {
     .admin {
         padding: 0 15px 0 15px;
+    }
+}
+@media (max-width: 320px) {
+    .admin__navigate-desctop {
+        display: none;
+    }
+    .admin__navigate-mobil {
+        display: flex;
+        align-items: center;
+        button {
+            width: 32px;
+            height: 32px;
+            margin-right: 5px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            background: #ffca65;
+            opacity: 0.3;
+            border-radius: 100px;
+        }
     }
 }

@@ -112,6 +112,7 @@ const Header: FC<HeaderProps> = ({ cardCount, cardSum }) => {
                     <img src={search_mobile} alt="" />
                     <span>Поиск</span>
                 </div>
+                <NavLink to="/sultan/admin">Админка</NavLink>
             </div>
             <hr className="hr-third"/>
             <div className="menu__show">

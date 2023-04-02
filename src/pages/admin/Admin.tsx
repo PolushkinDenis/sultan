@@ -4,11 +4,15 @@ import { products } from "../../data/products";
 import AdminItem from "../../components/adminItem/AdminItem";
 import './Admin.scss'
 import AdminChangeProduct from "../../components/adminChangeProduct/AdminChangeProduct";
+import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
+import { useNavigate } from "react-router-dom";
+import arrow_end from '../../images/arrow__end.png'
 
 const Admin: FC = () => {
     const [state, setState] = useState(0)
     const [productsAdmin, setProductsAdmin] = useState<Product[]>([])
     const localStor = localStorage.getItem('products')
+    const navigate = useNavigate();
 
     const [isModal, setModal] = useState(false)
     const onClose = () => setModal(false)
@@ -55,6 +59,13 @@ const Admin: FC = () => {
     console.log(isModal)
     return (
         <div className="admin">
+             <div className="admin__navigate-desctop">
+                <Breadcrumbs links={[{ link: "/sultan/admin", name: "Админка" }]} />
+            </div>
+            <div className="admin__navigate-mobil">
+                <button onClick={() => navigate(-1)}><img src={arrow_end} /></button>
+                <div>Назад</div>
+            </div>
             {productsAdmin.length === 0 ? (
                 <div className="admin__start">
                     <div>Нет добавленных товаров</div>

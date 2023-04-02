@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Card from './pages/card/Card';
 import Catalog from './pages/catalog/Catalog';
@@ -38,11 +38,12 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <Header cardCount={cardCount} cardSum={cardSum}/>
+        <Header cardCount={cardCount} cardSum={cardSum} />
         <Routes>
+          <Route path="*" element={<Navigate to="/sultan" />} />
           <Route path='/sultan' element={<Catalog onClick={onClickBB} />} />
-          <Route path='/sultan/card' element={<Card onClick={onClickBB}/>} />
-          <Route path='/sultan/product/:id' element={<ProductCard onClick={onClickBB}/>} />
+          <Route path='/sultan/card' element={<Card onClick={onClickBB} />} />
+          <Route path='/sultan/product/:id' element={<ProductCard onClick={onClickBB} />} />
           <Route path='/sultan/admin' element={<Admin />} />
         </Routes>
         <Footer />

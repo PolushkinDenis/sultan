@@ -2,12 +2,13 @@
     display: flex;
     text-align: center;
     margin-top: 45px;
-    p {
+    a {
         margin:0;
         font-weight: 300;
         font-size: 14px;
         line-height: 120%;
         color: #3f4e65;
+        text-decoration: none;
     }
     .breadcrumbs__item {
         display: flex;

@@ -16,7 +16,7 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({ links }) => {
 
     return (
         <div className="breadcrumbs">
-            <p>Главная</p>
+            <NavLink to="/sultan">Главная</NavLink>
             {links.map(link => (
                 <div className="breadcrumbs__item" key={link.name}>
                     <img src={separator} />

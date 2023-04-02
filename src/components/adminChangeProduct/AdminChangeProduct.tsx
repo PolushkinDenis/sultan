@@ -136,9 +136,11 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
             const newProductArray = [newProduct]
             const localStorageProducts = localStorage.getItem('products')
             if (localStorageProducts === null) {
+                setAdded(true)
                 localStorage.setItem('products', JSON.stringify(newProductArray));
             }
             else if (localStorageProducts === "[]") {
+                setAdded(true)
                 localStorage.setItem('products', JSON.stringify(newProductArray));
             }
             else if (title === "Добавление") {
