@@ -11,6 +11,7 @@ import BrandsList from "./brandsList/BrandsList";
 import deleteBtn from '../../images/deleteCard.png'
 import horizontalSplitterFilter from '../../images/horizontalSplitterFilter.png'
 import arrow_inc from '../../images/arrow_inc.png'
+import arrow_dec from '../../images/arrow_dec.png'
 import arrow_bth_show from '../../images/arrow_bth_show.png'
 import arrow_bth_none from '../../images/arrow_bth_none.png'
 
@@ -358,10 +359,12 @@ const Filters: FC = () => {
                     </div>
                     <div>
                         {manufacturersList.map(manufacturer => (
-                            <ManufacturerList manufacturer={manufacturer} key={manufacturer.name} />
+                            <div className={!showAllManufacturers ? "manufacturer__list-item" : "manufacturer__list-allItem"} key={manufacturer.name}>
+                                <ManufacturerList manufacturer={manufacturer}  />
+                            </div>
                         ))}
                     </div>
-                    <div className="swoh__all"><button onClick={e => setShowAllManufacturers(!showAllManufacturers)}>Показать все</button><img src={arrow_inc} alt="" /></div>
+                    <div className="swoh__all"><button onClick={e => setShowAllManufacturers(!showAllManufacturers)}>Показать все</button><img src={showAllManufacturers ? arrow_dec : arrow_inc} alt="" /></div>
 
                 </div>
                 <img className="horizontalSplitterFilter" src={horizontalSplitterFilter} alt="" />
@@ -372,23 +375,13 @@ const Filters: FC = () => {
                         <input className="search-button" type="button" />
                     </div>
                     <div>
-                        {/* {showAllBrand === false ? (
-                        <div>
-                            
-                          
-                        </div>
-                    ) : (
-                        <div>
-                            {brandsList.map(brand => (
-                                <BrandsList brands={brand} key={brand.name} />
-                            ))}
-                        </div>
-                    )} */}
                         {brandsList.map(brand => (
-                            <BrandsList brands={brand} key={brand.name} />
+                            <div className={!showAllBrand ? "brands__list-item" : "brands__list-allItem"} key={brand.name}>
+                                <BrandsList brands={brand} />
+                            </div>
                         ))}
                     </div>
-                    <div className="swoh__all"><button onClick={e => setShowAllBrand(!showAllBrand)}>Показать все</button><img src={arrow_inc} alt="" /></div>
+                    <div className="swoh__all"><button onClick={e => setShowAllBrand(!showAllBrand)}>Показать все</button><img src={ showAllBrand ? arrow_dec : arrow_inc} alt="" /></div>
                 </div>
                 <div className="filters__btns">
                     <button className="btn__show" onClick={applyFilters}>Показать</button>

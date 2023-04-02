@@ -196,3 +196,41 @@
         }
     }
 }
+.brands__list-item, .brands__list-allItem{
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+}
+.brands__list-item:nth-child(n + 5) {
+    display: none;
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+}
+
+.manufacturer__list-item, .manufacturer__list-allItem{
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+}
+.manufacturer__list-item:nth-child(n + 5) {
+    display: none;
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 320px) {
+    .brands__list-item:nth-child(n + 3) {
+    display: none;
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+}
+.manufacturer__list-item:nth-child(n + 3) {
+    display: none;
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+}
+}
