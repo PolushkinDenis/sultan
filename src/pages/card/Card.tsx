@@ -5,6 +5,8 @@ import horizontalSplitter_card from "../../images/horizontalSplitter_card.png"
 import { Product } from "../../types/product";
 import CardItem from "../../components/cardItem/CardItem";
 import MakeOrder from "../../components/makeOrder/MakeOrder";
+import { useNavigate } from "react-router-dom";
+import arrow_end from '../../images/arrow__end.png'
 
 interface ProductItem {
     product: Product,
@@ -19,6 +21,7 @@ const Card: FC<CardProps> = ({ onClick }) => {
     const [productList, setProductList] = useState<ProductItem[]>([])
     const [totalPrice, setTotalPrice] = useState<number>(0)
     const localStor = localStorage.getItem('card')
+    const navigate = useNavigate();
 
     const [isModal, setModal] = useState(false)
     const onClose = () => setModal(false)
@@ -45,7 +48,13 @@ const Card: FC<CardProps> = ({ onClick }) => {
 
     return (
         <div className="card">
-            <Breadcrumbs links={[{ link: '/card', name: 'Козина' }]} />
+            <div className="card__navigate-desctop">
+                <Breadcrumbs links={[{ link: '/sultan/card', name: 'Козина' }]} />
+            </div>
+            <div className="card__navigate-mobil">
+                <button onClick={() => navigate(-1)}><img src={arrow_end} /></button>
+                <div>Назад</div>
+            </div>
             <h1>КОРЗИНА</h1>
             <img className="horizontalSplitter_card" src={horizontalSplitter_card} alt="" />
             {productList.map((product) => (

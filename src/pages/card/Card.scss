@@ -1,6 +1,12 @@
 .card {
     max-width: 1370px;
     margin: 0 auto;
+    .card__navigate-desctop {
+        display: block;
+    }
+    .card__navigate-mobil {
+        display: none;
+    }
     h1 {
         margin: 50px 0;
     }
@@ -50,6 +56,28 @@
             align-items: center;
             .createOrder {
                 margin-top: 25px;
+            }
+        }
+    }
+}
+@media (max-width: 320px) {
+    .card {
+        .card__navigate-desctop {
+            display: none;
+        }
+        .card__navigate-mobil {
+            display: flex;
+            align-items: center;
+            button {
+                width: 32px;
+                height: 32px;
+                margin-right: 5px;
+                border: none;
+                cursor: pointer;
+                outline: none;
+                background: #ffca65;
+                opacity: 0.3;
+                border-radius: 100px;
             }
         }
     }

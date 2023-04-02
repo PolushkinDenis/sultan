@@ -36,7 +36,7 @@ const MakeOrder: FC<MakeOrder> = ({
                         &times;
                     </span>
                 </div>
-                <div className="modal-body">
+                <div className="modal-body-order">
                     <img src={makeOrder} alt="Готово"/>
                     <div className="modal-body_main">Спасибо за заказ</div>
                     <div className="modal-body_secondary">Наш менеджер свяжется с вами в ближайшее время</div>

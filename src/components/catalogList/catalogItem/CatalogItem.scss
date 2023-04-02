@@ -10,10 +10,10 @@
         width: 290px;
         height: 490px;
     }
-   
+
     .catalogItem__box {
         padding: 29px 23px;
-       
+
         .product__photo {
             text-align: center;
             img {
@@ -66,4 +66,27 @@
             }
         }
     }
+}
+
+.catalogItem__box-toCard {
+    display: flex;
+    align-items: center;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 130%;
+    color: #111111;
+    margin-top: 15px;
+}
+.addToCard-btn {
+    margin-left: 40px;
+    width: 153px;
+    height: 45px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: #ffc85e;
+    border-radius: 80px;
+    color: #ffffff;
 }

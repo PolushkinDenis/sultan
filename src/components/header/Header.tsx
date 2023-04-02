@@ -73,12 +73,13 @@ const Header: FC<HeaderProps> = ({ cardCount, cardSum }) => {
                     <a href="#">Доставка и оплата</a>
                     <a href="#">Возврат</a>
                     <a href="#">Контакты</a>
+                    <NavLink to="/sultan/admin">Админка</NavLink>
                 </div>
             </div>
             <hr className="hr-first" />
             <div className="header__content-second">
                 <button className="active__menu" onClick={e => setModal(!isModal)}><img src={!isModal ? menu_start : menu_active}/></button>
-                <NavLink to="/"><img className="logo" src={logo} alt="Султан" /></NavLink>
+                <NavLink to="/sultan"><img className="logo" src={logo} alt="Султан" /></NavLink>
                 <button className="header__catalog-btn">Каталог<img src={catalog_btn} alt="catalog" /></button>
                 <div className="header__search">
                     <input className="search-input" type="text" placeholder="Поиск..." />
@@ -92,7 +93,7 @@ const Header: FC<HeaderProps> = ({ cardCount, cardSum }) => {
                 <img className="manager" src={manager} alt="manager" />
                 <button className="header__price-btn">Прайс-лист<img src={price_list} alt="price list" /></button>
                 <div className="header__card">
-                    <NavLink to="/card"><img src={card} alt="card" />
+                    <NavLink to="/sultan/card"><img src={card} alt="card" />
                         <div className="header__card-count">{cardCount}</div>
                     </NavLink>
                 </div>

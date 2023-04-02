@@ -7,6 +7,7 @@ import deleteCard from '../../images/deleteCard.png'
 import horizontalSplitter_card from "../../images/horizontalSplitter_card.png"
 
 import "./CardItem.scss"
+import { useNavigate } from "react-router-dom";
 
 interface ProductItem {
     product: Product,

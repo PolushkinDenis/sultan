@@ -19,8 +19,33 @@
     width: 180px;
     margin-bottom: 20px;
 }
+.admin__start {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;    
+    text-transform: uppercase; 
+    color: #111111;
+    align-items: center;
+    button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        margin-top: 20px;
+        background: #ffc85e;
+        border-radius: 80px;
+        color: #ffffff;
+        height: 60px;
+        width: 180px;
+        margin-bottom: 20px;
+    }
+}
 @media (max-width: 1420px) {
     .admin {
         padding: 0 15px 0 15px;
-    } 
+    }
 }

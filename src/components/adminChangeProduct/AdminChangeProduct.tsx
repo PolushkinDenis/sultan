@@ -145,6 +145,7 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
                 const localStorageProductsTypes: Product[] = JSON.parse(localStorageProducts)
                 const index = localStorageProductsTypes.findIndex(prod => prod.barcode === newProduct.barcode)
                 if (index === -1) {
+                    setAdded(true)
                     localStorageProductsTypes.push(newProduct)
                     localStorage.setItem('products', JSON.stringify(localStorageProductsTypes));
                 }
@@ -221,8 +222,8 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
 
     if (!visible) return null;
 
-    console.log(listOfFilter)
-    console.log(listOfFilter)
+    console.log(added)
+    console.log(title)
     return (
         <div className="modal" onClick={onClose}>
             <div className="modal-dialog" onClick={e => e.stopPropagation()}>

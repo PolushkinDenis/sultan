@@ -27,6 +27,7 @@ const Admin: FC = () => {
 
 
     const addProduct = () => {
+        console.log("ASDASd")
         setModal(true)
     }
 
@@ -51,15 +52,16 @@ const Admin: FC = () => {
     }, [localStor])
 
     console.log(productsAdmin)
-
+    console.log(isModal)
     return (
         <div className="admin">
             {productsAdmin.length === 0 ? (
-                <div>
+                <div className="admin__start">
                     <div>Нет добавленных товаров</div>
                     <div>Добавить товары из JSON ?</div>
-                    <button onClick={initProductsFromJSON}>ДА</button>
-                    <button onClick={addProduct}>Добавить новый товар</button>
+                        <button onClick={initProductsFromJSON}>ДА</button>
+                        <button onClick={addProduct}>Добавить новый товар</button>
+
                     <AdminChangeProduct
                         title="Добавление"
                         visible={isModal}
@@ -75,6 +77,12 @@ const Admin: FC = () => {
                     {productsAdmin.map((prod) => (
                         <AdminItem product={prod} key={prod.barcode} onClick={changeState} />
                     ))}
+                    <AdminChangeProduct
+                        title="Добавление"
+                        visible={isModal}
+                        product={startProduct}
+                        onClose={onClose}
+                    />
                 </div>
             )}
 

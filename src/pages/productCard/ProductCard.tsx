@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 import { products } from "../../data/products";
 import separator from "../../images/separator.png"
@@ -47,6 +47,8 @@ const ProductCard: FC<ProductCardProps> = ({ onClick }) => {
     const [descriptionShow, setDescriptionShow] = useState(false)
     const [specificationsShow, setSpecificationsShow] = useState(false)
     const localStor = localStorage.getItem('card')
+
+    const navigate = useNavigate();
 
 
     const changeDescriptionShow = () => {
@@ -142,10 +144,10 @@ const ProductCard: FC<ProductCardProps> = ({ onClick }) => {
             {product && (
                 <div>
                     <div className="productCard__navigate-desctop">
-                        <Breadcrumbs links={[{ link: "/", name: "Каталог" }, { link: `/product/${product.barcode}`, name: product?.name }]} />
+                        <Breadcrumbs links={[{ link: "/sultan/", name: "Каталог" }, { link: `/sultan/product/${product.barcode}`, name: product?.name }]} />
                     </div>
                     <div className="productCard__navigate-mobil">
-                        <button><img src={arrow_end} /></button>
+                        <button onClick={() => navigate(-1)}><img src={arrow_end} /></button>
                         <div>Назад</div>
                     </div>
                     <div className="productCard__content">

@@ -10,6 +10,7 @@ import { Product } from "../../types/product";
 import { useDispatch } from "react-redux";
 import { filtersSlice } from "../../store/reducers/filtersSlice";
 import { useAppSelector } from "../../hooks/redux";
+import { useNavigate } from "react-router-dom";
 
 const dataSort = [
     { value: 'body', name: 'Уход за телом' },
@@ -42,11 +43,9 @@ interface CatalogProps {
 }
 
 const Catalog: FC<CatalogProps> = ({ onClick }) => {
-    //const [productFilter, setProductFilter] = useState<Product[]>([])
-    // const [productFilter, setProductFilter] = useState<Product[]>(localStorage.getItem('products') === null ? (products) : ())
 
-    //const {brand, manufacturer, priceFrom, priceTo, type} = useAppSelector(state => state.filterReducer)
     const dispatch = useDispatch()
+    const navigate = useNavigate();
 
     const finalSorting = useAppSelector(state => state.filterReducer.finalSorting)
     const productsRedux = useAppSelector(state => state.filterReducer.products)
@@ -143,10 +142,10 @@ const Catalog: FC<CatalogProps> = ({ onClick }) => {
     return (
         <div className="catalog">
             <div className="catalog__navigate-desctop">
-                <Breadcrumbs links={[{ link: "/", name: "Каталог" }]} />
+                <Breadcrumbs links={[{ link: "/sultan", name: "Каталог" }]} />
             </div>
             <div className="catalog__navigate-mobil">
-                <button><img src={arrow_end} /></button>
+                <button onClick={() => navigate(-1)}><img src={arrow_end} /></button>
                 <div>Назад</div>
             </div>
             <div className="catalog__title">

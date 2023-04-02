@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { cardSlice } from "../../../store/reducers/cardSlice";
 import { useAppSelector } from "../../../hooks/redux";
 import { NavLink } from "react-router-dom";
+import cart_btn from '../../../images/cart_btn.png'
 
 interface ProductItem {
     product: Product,
@@ -70,15 +71,15 @@ const CatalogItem: FC<CatalogItemProps> = ({ product, onClick }) => {
                     <p>{product.size}</p>
                 </div>
                 {/* <NavLink to={`/catalog/${product.barcode}`}>{product.name}</NavLink> */}
-                <NavLink to={`/product/${product.barcode}`}><p className="product__name">{product.name}</p></NavLink>
+                <NavLink to={`/sultan/product/${product.barcode}`}><p className="product__name">{product.name}</p></NavLink>
                 <div className="product__addition">
                     <div className="addition__title">Штрихкод: <p>{product.barcode}</p></div>
                     <div className="addition__title">Производитель:: <p>{product.manufacturer}</p></div>
                     <div className="addition__title">Бренд:: <p>{product.brand}</p></div>
                 </div>
-                <div>
+                <div className="catalogItem__box-toCard">
                     <div>{product.price} ₸</div>
-                    <button onClick={e => addProductToCard(e)}>В корзину</button>
+                    <button className="addToCard-btn" onClick={e => addProductToCard(e)}>В корзину <img src={cart_btn}/></button>
                 </div>
             </div>
         </div>

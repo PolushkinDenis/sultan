@@ -40,10 +40,10 @@ function App() {
       <BrowserRouter>
         <Header cardCount={cardCount} cardSum={cardSum}/>
         <Routes>
-          <Route path='/' element={<Catalog onClick={onClickBB} />} />
-          <Route path='/card' element={<Card onClick={onClickBB}/>} />
-          <Route path='/product/:id' element={<ProductCard onClick={onClickBB}/>} />
-          <Route path='/admin' element={<Admin />} />
+          <Route path='/sultan' element={<Catalog onClick={onClickBB} />} />
+          <Route path='/sultan/card' element={<Card onClick={onClickBB}/>} />
+          <Route path='/sultan/product/:id' element={<ProductCard onClick={onClickBB}/>} />
+          <Route path='/sultan/admin' element={<Admin />} />
         </Routes>
         <Footer />
       </BrowserRouter>
