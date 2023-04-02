@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/sultan/static/css/main.1911b64e.css",
-    "main.js": "/sultan/static/js/main.b7bdc9e9.js",
+    "main.css": "/sultan/static/css/main.fe39b488.css",
+    "main.js": "/sultan/static/js/main.d0aaf765.js",
     "index.html": "/sultan/index.html",
-    "main.1911b64e.css.map": "/sultan/static/css/main.1911b64e.css.map",
-    "main.b7bdc9e9.js.map": "/sultan/static/js/main.b7bdc9e9.js.map"
+    "main.fe39b488.css.map": "/sultan/static/css/main.fe39b488.css.map",
+    "main.d0aaf765.js.map": "/sultan/static/js/main.d0aaf765.js.map"
   },
   "entrypoints": [
-    "static/css/main.1911b64e.css",
-    "static/js/main.b7bdc9e9.js"
+    "static/css/main.fe39b488.css",
+    "static/js/main.d0aaf765.js"
   ]
 }
