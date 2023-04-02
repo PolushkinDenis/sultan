@@ -1,6 +1,7 @@
 .adminItem {
     .product__img {
-        width: 100px;
+        max-width: 100px;
+        max-height: 150px;
     }
     .adminItem__item {
         display: flex;
@@ -24,4 +25,21 @@
             color: #111111;
         }
     }
+}
+.adminItem__btn-group {
+    button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        margin-top: 20px;
+        background: #ffc85e;
+        border-radius: 80px;
+        color: #ffffff;
+        height: 40px;
+        width: 130px;
+        margin-bottom: 20px;
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+    }  
 }

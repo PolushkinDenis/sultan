@@ -1,9 +1,16 @@
+.catalog_list-main {
+    width: 100%;
+}
 .catalogList {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-left: 100px;
     margin-top: 30px;
+    // width: 100%;
+    @media (max-width: 1370px) {
+        justify-content: space-around;
+    }
     @media (max-width: 710px) {
         margin-left: 20px;
     }
@@ -19,6 +26,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 50px;
+    margin-left: 100px;
     .pagination {
         background: none;
         border: none;
@@ -52,6 +61,12 @@
         height: 35px;
         background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
         border-radius: 1000px;
+    }
+   
+}
+@media (max-width: 600px) {
+    .catalogList__page {
+    margin-left: 0px;
     }
 }
 

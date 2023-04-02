@@ -5,11 +5,16 @@ import mail from '../../images/mail.png'
 import logo from '../../images/logo.png'
 import catalog_btn from '../../images/catalog_btn.png'
 import price_list from '../../images/price_list.png'
+import catalog_mobile from '../../images/catalog_mobile.png'
+import search_mobile from '../../images/search_mobile.png'
+import menu_start from '../../images/menu_start.png'
+import menu_active from '../../images/menu_active.png'
 import card from '../../images/card.png'
 import manager from '../../images/manager.png'
 import { useAppSelector } from "../../hooks/redux";
 import { Product } from "../../types/product";
 import { NavLink } from "react-router-dom";
+import HeaderMenu from "../headerMenu/HeaderMenu";
 
 interface HeaderProps {
     cardCount: number
@@ -17,6 +22,19 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ cardCount, cardSum }) => {
+    const [menu, setMenu] = useState(false)
+    const [isModal, setModal] = useState(false)
+    const onClose = () => setModal(false)
+
+    useEffect(() => {
+        if(isModal) {
+            document.body.style.overflow = "hidden";
+        }
+        else {
+            document.body.style.overflow = "";
+        }
+
+    }, [isModal])
     // const cardCount = useAppSelector(state => state.cardReducer.products).length
 
     // const cardStore = localStorage.getItem('card')
@@ -45,8 +63,8 @@ const Header: FC<HeaderProps> = ({ cardCount, cardSum }) => {
                     <div className="header__box">
                         <img className="header__mail" src={mail} alt="mail" />
                         <div className="header__address">
-                            <p className="header__address-main">г. Кокчетав, ул. Ж. Ташенова 129Б</p>
-                            <p className="header__address-secondary">(Рынок Восточный)</p>
+                            <p className="header__address-main">opt.sultan@mail.ru</p>
+                            <p className="header__address-secondary">На связи в любое время</p>
                         </div>
                     </div>
                 </div>
@@ -57,8 +75,9 @@ const Header: FC<HeaderProps> = ({ cardCount, cardSum }) => {
                     <a href="#">Контакты</a>
                 </div>
             </div>
-            <hr />
+            <hr className="hr-first" />
             <div className="header__content-second">
+                <button className="active__menu" onClick={e => setModal(!isModal)}><img src={!isModal ? menu_start : menu_active}/></button>
                 <NavLink to="/"><img className="logo" src={logo} alt="Султан" /></NavLink>
                 <button className="header__catalog-btn">Каталог<img src={catalog_btn} alt="catalog" /></button>
                 <div className="header__search">
@@ -83,6 +102,24 @@ const Header: FC<HeaderProps> = ({ cardCount, cardSum }) => {
                 </div>
             </div>
             <hr />
+            <div className="header__content-third">
+                <div className="content__third-item">
+                    <img src={catalog_mobile} alt="" />
+                    <span>Каталог</span>
+                </div>
+                <div className="content__third-item">
+                    <img src={search_mobile} alt="" />
+                    <span>Поиск</span>
+                </div>
+            </div>
+            <hr className="hr-third"/>
+            <div className="menu__show">
+            <HeaderMenu 
+                visible={isModal}
+                onClose={onClose}
+            />
+            </div>
+           
         </header>
     )
 }

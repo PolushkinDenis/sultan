@@ -24,7 +24,7 @@ const Admin: FC = () => {
         price: 0,
         filter: []
     }
-   
+
 
     const addProduct = () => {
         setModal(true)
@@ -69,6 +69,9 @@ const Admin: FC = () => {
                 </div>
             ) : (
                 <div>
+                    <div className="admin__addProduct">
+                        <button className="btn-addProduct" onClick={addProduct}>Добавить новый товар</button>
+                    </div>
                     {productsAdmin.map((prod) => (
                         <AdminItem product={prod} key={prod.barcode} onClick={changeState} />
                     ))}

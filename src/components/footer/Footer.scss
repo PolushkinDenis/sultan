@@ -174,4 +174,72 @@ footer {
             }
         }
     }
+    .content__price-btn {
+        display: none;
+    }
+}
+@media (max-width: 1410px) {
+    footer {
+        padding: 0 15px 0 15px;
+    }
+}
+
+@media (max-width: 1050px) {
+    footer {
+        height: 910px;
+        .footer__content {
+            flex-direction: column;
+            align-items: center;
+            padding-top: 16px;
+            .footer__content-first {
+                .content__first-logo{
+                    display: flex;
+                    align-items: center;
+                    .first__logo-img {
+                        width: 90px;
+                        margin-right: 44px;
+                    }
+                }
+            }
+            .footer__content-two {
+                margin-top: 30px;
+                .footer__content-second {
+                    margin-right: 24px;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+            .footer__content-tree {
+                width: 290px;
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                .footer__content-third {
+                    max-width: 125px;
+                    margin-top: 75px;
+                    .header__price-btn, .content__third-title {
+                        display: none;
+                    }
+                }
+                .footer__content-fourth {
+                    margin-top: 47px;
+                }
+            }
+        }
+       
+        .content__price-btn {
+            display: block;
+            align-items: center;
+            justify-content: center;
+            width: 149pxpx;
+            height: 40px;
+            padding: 10px 19px;
+            background: #ffc85e;
+            border-radius: 79px;
+            border: none;
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 17px;
+        }
+    }
 }

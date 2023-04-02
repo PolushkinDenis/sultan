@@ -2,3 +2,25 @@
     max-width: 1370px;
     margin: 0 auto;
 }
+.admin__addProduct {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-addProduct {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background: #ffc85e;
+    border-radius: 80px;
+    color: #ffffff;
+    height: 60px;
+    width: 180px;
+    margin-bottom: 20px;
+}
+@media (max-width: 1420px) {
+    .admin {
+        padding: 0 15px 0 15px;
+    } 
+}

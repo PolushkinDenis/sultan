@@ -14,7 +14,8 @@ const Footer: FC = () => {
             <div className="footer__content">
                 <div className="footer__content-first">
                     <div className="content__first-logo">
-                        <img src={logo_footer} alt="logo" />
+                        <img className="first__logo-img" src={logo_footer} alt="logo" />
+                        <button className="content__price-btn price_btn-mobile">Прайс-лист<img src={price_list} alt="price list" /></button>
                     </div>
                     <div className="content__first-discription">
                         Компания «Султан» — снабжаем розничные магазины товарами

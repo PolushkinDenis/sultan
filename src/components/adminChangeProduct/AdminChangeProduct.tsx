@@ -49,6 +49,7 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
 
     const [selectedFilter, setSelectedFilter] = useState<string[]>(product.filter)
     const [error, setError] = useState("")
+    const [added, setAdded] = useState(false)
 
     const [listOfFilter, setListOfFilter] = useState<ListOfChecked[]>([])
 
@@ -86,7 +87,7 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
             }
         })
         // Добавляем исходные фильтры
-        
+
         // Добавляем фильтр если он выбран
         if (checked === true) {
             const newFilters: string[] = []
@@ -126,7 +127,7 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
             type,
             url
         }
-        
+
         if (barcode === "" || brand === "" || description === "" || filter.length === 0 ||
             manufacturer === "" || name === "" || price === 0 || size === "" || type.length === 0 || url === "") {
             setError("Заполните все поля")
@@ -137,13 +138,13 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
             if (localStorageProducts === null) {
                 localStorage.setItem('products', JSON.stringify(newProductArray));
             }
-            else if(localStorageProducts === "[]"){
+            else if (localStorageProducts === "[]") {
                 localStorage.setItem('products', JSON.stringify(newProductArray));
             }
-            else if(title === "Добавление"){
+            else if (title === "Добавление") {
                 const localStorageProductsTypes: Product[] = JSON.parse(localStorageProducts)
                 const index = localStorageProductsTypes.findIndex(prod => prod.barcode === newProduct.barcode)
-                if(index === -1) {
+                if (index === -1) {
                     localStorageProductsTypes.push(newProduct)
                     localStorage.setItem('products', JSON.stringify(localStorageProductsTypes));
                 }
@@ -151,14 +152,14 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
                     setError("Товар с таким штрихкодом уже существует")
                 }
             }
-            else if(title === "Изменение") {
+            else if (title === "Изменение") {
                 const localStorageProductsTypes: Product[] = JSON.parse(localStorageProducts)
                 const index = localStorageProductsTypes.findIndex(prod => prod.barcode === newProduct.barcode)
                 localStorageProductsTypes[index] = newProduct
-                console.log(localStorageProductsTypes)
+                setAdded(true)
                 localStorage.setItem('products', JSON.stringify(localStorageProductsTypes));
             }
-            console.log(newProduct)
+            //console.log(newProduct)
         }
     }
 
@@ -177,7 +178,7 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
         else {
             dataSort.map((sort) => {
                 selectedFilter.map(fltr => {
-                    if (sort.value === fltr ) {
+                    if (sort.value === fltr) {
                         const newFilter: ListOfChecked = {
                             check: true,
                             value: sort.value,
@@ -186,13 +187,15 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
                         newListOfFilter.push(newFilter)
                     }
                     else {
-                        if(newListOfFilter.filter(list => list.value === sort.value).length === 0) {
-                            const newFilter: ListOfChecked = {
-                                check: false,
-                                value: sort.value,
-                                name: sort.name
+                        if (newListOfFilter.filter(list => list.value === sort.value).length === 0) {
+                            if (selectedFilter.filter(select => select === sort.value).length === 0) {
+                                const newFilter: ListOfChecked = {
+                                    check: false,
+                                    value: sort.value,
+                                    name: sort.name
+                                }
+                                newListOfFilter.push(newFilter)
                             }
-                            newListOfFilter.push(newFilter)
                         }
                     }
                 })
@@ -200,7 +203,7 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
         }
         // let uniqueSet = new Set(newListOfFilter);
         // let uniqueArray = Array.from(uniqueSet).map(JSON.parse(uniqueSet));
-        console.log(newListOfFilter)
+        //console.log(newListOfFilter)
         setListOfFilter(newListOfFilter)
     }, [])
 
@@ -209,6 +212,12 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
             setError("")
         }, 2000)
     }, [error])
+
+    useEffect(() => {
+        setTimeout(() => {
+            setAdded(false)
+        }, 2000)
+    }, [added])
 
     if (!visible) return null;
 
@@ -222,7 +231,7 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
                         &times;
                     </span>
                 </div>
-                <div>{title}</div>
+                <div className="modal__title">{title}</div>
                 <div className="modal-body">
                     <div className="item"><p>Название</p><input type="text" value={name} onChange={e => changeName(e)} /></div>
                     <div className="item">
@@ -248,8 +257,14 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
 
                         ))}
                     </div>
-                    <div>{error}</div>
-                    <button onClick={saveProduct}>Сохранить</button>
+
+
+                </div>
+                <div className="modal__save">
+                    <div className="modal__save-error">{error}</div>
+                    <div className={added ? "modal__save-added" : "modal__save-notadded"} >{title === "Добавление" ? "Добавлено" : "Изменено"}</div>
+                    <button className="modal__save-btn" onClick={saveProduct}>Сохранить</button>
+
                 </div>
             </div>
         </div>

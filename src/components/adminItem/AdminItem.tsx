@@ -38,7 +38,7 @@ const AdminItem: FC<AdminItemProps> = ({ product, onClick }) => {
             <div className="adminItem__item"><p>Бренд: </p><span>{product.brand}</span></div>
             <div className="adminItem__item"><p>Описание: </p><span>{product.description}</span></div>
             <div className="adminItem__item"><p>Цена: </p><span>{product.price}</span></div>
-            <div>
+            <div className="adminItem__btn-group">
                 <button onClick={deleteProduct}>Удалить</button>
                 <button onClick={changeProduct}>Изменить</button>
             </div>

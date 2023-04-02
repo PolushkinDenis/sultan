@@ -193,7 +193,7 @@ const CatalogList: FC<CatalogListProps> = ({ onClick }) => {
     console.log(finalSorting)
 
     return (
-        <div className="catalog_list">
+        <div className="catalog_list-main">
             <div className="catalogList">
                 {productPagination.map((product) => (
                     <CatalogItem product={product} onClick={onClick} key={product.name} />

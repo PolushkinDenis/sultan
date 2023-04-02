@@ -71,7 +71,7 @@ const CardItem: FC<CardItemProps> = ({ product, onClick }) => {
                     </div>
                 </div>
 
-                <div className="cardItem__content">
+                <div className="cardItem__content-second">
                     <div className="cardItem__count-changing">
                         <img className="cardItem__count-separatorStart" src={separatorCardItem} />
                         <button onClick={decCountOfProduct}>-</button>

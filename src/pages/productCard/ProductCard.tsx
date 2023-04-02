@@ -13,6 +13,7 @@ import price_list_img from '../../images/price_list-product.png'
 import arrow_inc from '../../images/arrow_inc.png'
 import arrow_dec from '../../images/arrow_dec.png'
 import horizontalSplitter from '../../images/horizontalSplitter.png'
+import arrow_end from '../../images/arrow__end.png'
 
 const dataSort = [
     { value: 'body', name: 'Уход за телом' },
@@ -46,6 +47,7 @@ const ProductCard: FC<ProductCardProps> = ({ onClick }) => {
     const [descriptionShow, setDescriptionShow] = useState(false)
     const [specificationsShow, setSpecificationsShow] = useState(false)
     const localStor = localStorage.getItem('card')
+
 
     const changeDescriptionShow = () => {
         setDescriptionShow(!descriptionShow)
@@ -122,6 +124,15 @@ const ProductCard: FC<ProductCardProps> = ({ onClick }) => {
         else {
             const productsLocal: Product[] = localStorageProducts !== null ? JSON.parse(localStorageProducts) : []
             const currentProduct: Product = productsLocal.filter(prod => prod.barcode === id)[0]
+            const typesList: string[] = []
+            currentProduct.filter.map(filter => {
+                dataSort.map(data => {
+                    if (filter === data.value) {
+                        typesList.push(data.name)
+                    }
+                })
+            })
+            setTypeList(typesList.join(", "))
             setProduct(currentProduct)
         }
     }, [])
@@ -130,8 +141,13 @@ const ProductCard: FC<ProductCardProps> = ({ onClick }) => {
         <div className="productCard">
             {product && (
                 <div>
-                    <Breadcrumbs links={[{ link: "/", name: "Каталог" }, { link: `/product/${product.barcode}`, name: product?.name }]} />
-
+                    <div className="productCard__navigate-desctop">
+                        <Breadcrumbs links={[{ link: "/", name: "Каталог" }, { link: `/product/${product.barcode}`, name: product?.name }]} />
+                    </div>
+                    <div className="productCard__navigate-mobil">
+                        <button><img src={arrow_end} /></button>
+                        <div>Назад</div>
+                    </div>
                     <div className="productCard__content">
                         <div className="productCard__content-img">
                             <img src={product.url} alt={product?.name} />
@@ -143,17 +159,23 @@ const ProductCard: FC<ProductCardProps> = ({ onClick }) => {
                                 <img src={product.type === "weight" ? weight_img : volume_img} alt={product.type} />
                                 {product.size}
                             </div>
-                            <div className="description__card">
-                                <div className="description__card-price">{product.price} ₸</div>
-                                <div className="count__changing">
-                                    <button onClick={decCountOfProduct}>-</button>
-                                    <div className="description__card-count">{countOfProduct}</div>
-                                    <button onClick={incCountOfProduct}>+</button>
-                                </div>
-                                <div className="toCard">
-                                    <button onClick={addToCard} className="toCard-btn">В корзину<img src={card_btn} alt="price list" /></button>
+                            <div className="description__card-desctopt description__card-mobil">
+                                <div className="description__card">
+                                    <div className="description__card-first">
+                                        <div className="description__card-price">{product.price} ₸</div>
+                                        <div className="count__changing">
+                                            <button onClick={decCountOfProduct}>-</button>
+                                            <div className="description__card-count">{countOfProduct}</div>
+                                            <button onClick={incCountOfProduct}>+</button>
+                                        </div>
+                                    </div>
+                                    <div className="toCard">
+                                        <button onClick={addToCard} className="toCard-btn">В корзину<img src={card_btn} alt="price list" /></button>
+                                        <img className="share_img share_img-mobil" src={share} alt="Поделиться" />
+                                    </div>
                                 </div>
                             </div>
+
                             <div className="description__share">
                                 <img className="share_img" src={share} alt="Поделиться" />
                                 <div className="share__add">При покупке от 10 000 ₸ бесплатная <br /> доставка по Кокчетаву и области</div>
@@ -167,6 +189,7 @@ const ProductCard: FC<ProductCardProps> = ({ onClick }) => {
                                 <div className="description__shortList-item"><p>Бренд:</p><span>{product.brand}</span></div>
                                 <div className="description__shortList-item"><p>Артикул:</p><span>{product.barcode}</span></div>
                                 <div className="description__shortList-item"><p>Штрихкод:</p><span>{product.barcode}</span></div>
+                                <div className="description__shortList-item"><p>Назначение:</p><span>{typeList}</span></div>
                             </div>
                             <div className="description__show">
                                 <button onClick={changeDescriptionShow}>Описание<img src={descriptionShow ? arrow_dec : arrow_inc} alt="->" /></button>

@@ -37,3 +37,20 @@
         }
     }
 }
+
+@media (max-width: 1410px) {
+    .card {
+        padding: 0 15px 0 15px;
+    }
+}
+@media (max-width: 630px) {
+    .card {
+        .card__createOrder {
+            flex-direction: column-reverse;
+            align-items: center;
+            .createOrder {
+                margin-top: 25px;
+            }
+        }
+    }
+}

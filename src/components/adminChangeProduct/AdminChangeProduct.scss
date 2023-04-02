@@ -58,11 +58,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-items: flex-start;
+    margin-left: 10px;
     margin-top: 56px;
     .item {
         display: flex;
         align-items: center;
         input {
+            margin-left: 10px;
+            height: 20px;
+        }
+        select {
             margin-left: 10px;
             height: 20px;
         }
@@ -91,4 +97,37 @@
     to {
         transform: translateY(0);
     }
+}
+
+.modal__title {
+    text-align: center;
+}
+.modal__save {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.modal__save-btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background: #ffc85e;
+    border-radius: 80px;
+    color: #ffffff;
+    height: 40px;
+    width: 130px;
+    margin-bottom: 20px;
+}
+.modal__save-error {
+    font-size: 16px;
+    color: red;
+}
+.modal__save-added {
+    display: block;
+    font-size: 16px;
+    color: green;
+}
+.modal__save-notadded {
+    display: none;
 }

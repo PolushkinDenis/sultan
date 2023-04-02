@@ -10,13 +10,14 @@
         width: 290px;
         height: 490px;
     }
+   
     .catalogItem__box {
         padding: 29px 23px;
        
         .product__photo {
             text-align: center;
             img {
-                max-width: 300px;
+                max-width: 290px;
                 max-height: 220px;
             }
         }
@@ -52,6 +53,16 @@
                     color: #111111;
                 }
                 display: flex;
+            }
+        }
+    }
+    @media (max-width: 400px) {
+        .catalogItem__box {
+            padding: 29px 15px;
+            .product__photo {
+                img {
+                    max-width: 275px;
+                }
             }
         }
     }
