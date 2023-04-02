@@ -331,8 +331,6 @@ const Filters: FC = () => {
         }
     }, [])
 
-    // console.log('filters')
-
     //console.log(manufacturersList)
     // console.log(initProducts)
 
