@@ -1,0 +1,111 @@
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    animation-name: appear;
+    animation-duration: 300ms;
+}
+
+.modal-dialog-order {
+    width: 100%;
+    max-width: 735px;
+    height: 424px;
+    position: relative;
+    margin: 0 20px;
+    max-height: calc(100vh - 40px);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slide-in;
+    animation-duration: 0.5s;
+    background: #ffffff;
+    border-radius: 8px;
+}
+
+.modal-header,
+.modal-footer {
+    display: flex;
+    align-items: center;
+}
+.modal-header {
+    justify-content: space-between;
+}
+.modal-footer {
+    border-top: 1px solid #dbdbdb;
+    justify-content: flex-end;
+}
+.modal-close {
+    cursor: pointer;
+    font-size: 32px;
+    // padding: 1rem;
+    margin: 36px 36px -1rem auto;
+    color: #ffc85e;
+}
+.modal-body {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 56px;
+    img {
+        width: 59px;
+        height: 59px;
+    }
+    .modal-body_main {
+        margin-top: 24px;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 40px;
+        line-height: 120%;
+        text-align: center;
+        text-transform: uppercase;
+        color: #111111;
+    }
+    .modal-body_secondary {
+        margin-top: 20px;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 120%;
+        text-align: center;
+        color: #3f4e65;
+    }
+}
+.modal-content {
+    padding: 1rem;
+}
+
+.modal-title {
+    margin: 0;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes slide-in {
+    from {
+        transform: translateY(-150px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}

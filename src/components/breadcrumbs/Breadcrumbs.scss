@@ -1,0 +1,34 @@
+.breadcrumbs {
+    display: flex;
+    text-align: center;
+    margin-top: 45px;
+    p {
+        margin:0;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 120%;
+        color: #3f4e65;
+    }
+    .breadcrumbs__item {
+        display: flex;
+        img {
+            margin-right: 10px;
+            margin-left: 10px;
+
+        }
+        a {
+            margin: 0;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 120%;
+            opacity: 1;
+            text-decoration: none;
+            color: #3f4e65;
+        }
+        &:last-child {
+            a {
+                opacity: 0.5;
+            }
+        }
+    }
+}

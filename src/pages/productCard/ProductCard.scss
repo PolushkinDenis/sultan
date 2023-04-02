@@ -1,0 +1,231 @@
+.productCard {
+    max-width: 1370px;
+    margin: 0 auto;
+
+    .productCard__content {
+        display: flex;
+        .productCard__content-img {
+            margin-top: 60px;
+        }
+        .productCard__content-description {
+            margin-top: 100px;
+            .description__availability {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 130%;
+                color: #1fd85d;
+            }
+            .description__name {
+                margin: 10px 0 0 0;
+                font-weight: 800;
+                font-family: "Inter";
+                font-style: normal;
+                font-size: 30px;
+                line-height: 150%;
+                color: #111111;
+            }
+            .description__weight {
+                margin-top: 11px;
+                img {
+                    margin-right: 5px;
+                }
+            }
+            .description__card {
+                display: flex;
+                align-items: center;
+                margin-top: 25px;
+                .description__card-price {
+                    font-weight: 800;
+                    font-size: 30px;
+                    line-height: 130%;
+                    color: #111111;
+                    margin-right: 40px;
+                }
+                .count__changing {
+                    display: flex;
+                    button {
+                        width: 34px;
+                        height: 23px;
+                        background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+                        border-radius: 1000px;
+                        align-items: center;
+                        border: none;
+                        cursor: pointer;
+                    }
+                    .description__card-count {
+                        margin: 0 17px;
+                    }
+                }
+                .toCard {
+                    margin-left: 38px;
+
+                    .toCard-btn {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 184px;
+                        height: 59px;
+                        background: #ffc85e;
+                        border-radius: 79px;
+                        font-weight: 700;
+                        font-size: 14px;
+                        line-height: 17px;
+                        color: #ffffff;
+                        border: none;
+                        cursor: pointer;
+                        img {
+                            margin-left: 12px;
+                        }
+                    }
+                }
+            }
+            .description__share {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                margin-top: 40px;
+                .share_img {
+                    width: 19px;
+                    height: 20px;
+                }
+                .share__add {
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 150%;
+                    color: #3f4e65;
+                }
+                .share__price_list {
+                    display: flex;
+                    align-items: center;
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 17px;
+                    color: #3f4e65;
+                    img {
+                        margin-left: 13px;
+                        width: 11px;
+                        height: 13px;
+                    }
+                }
+            }
+            .description__shortList {
+                margin-top: 55px;
+                .description__shortList-item {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 5px;
+                    p {
+                        margin: 0;
+                        font-family: "Inter";
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 14px;
+                        line-height: 150%;
+                        color: #3f4e65;
+                    }
+                    span {
+                        font-family: "Inter";
+                        font-style: normal;
+                        margin-left: 5px;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 150%;
+                        color: #111111;
+                    }
+                }
+            }
+            .description__show {
+                margin-top: 30px;
+                margin-bottom: 10px;
+                button {
+                    display: flex;
+                    align-items: center;
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    font-family: "Inter";
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 150%;
+                    color: #111111;
+                    padding: 0;
+
+                    img {
+                        margin-left: 5px;
+                    }
+                }
+                .descriptionShow {
+                    margin-top: 15px;
+                    font-family: "Inter";
+                    font-style: normal;
+                    font-weight: 300;
+                    font-size: 12px;
+                    line-height: 150%;
+                    color: #3f4e65;
+                }
+                .active {
+                    display: block;
+                    max-width: 611px;
+                }
+                .disable {
+                    display: none;
+                }
+            }
+            .specifications__show {
+                margin-top: 20px;
+                button {
+                    display: flex;
+                    align-items: center;
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    font-family: "Inter";
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 150%;
+                    color: #111111;
+                    padding: 0;
+
+                    img {
+                        margin-left: 5px;
+                    }
+                }
+                .specifications-active {
+                    display: block;
+                }
+                .specifications-disable {
+                    display: none;
+                }
+                .specificationsShow {
+                    margin-top: 15px;
+                    
+                    .specificationsShow-item {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 5px;
+                        p {
+                            font-family: "Inter";
+                            font-style: normal;
+                            font-weight: 300;
+                            font-size: 14px;
+                            line-height: 150%;
+                            color: #3f4e65;
+                            margin: 0;
+                        }
+                        span {
+                            margin-left: 5px;
+                            font-family: "Inter";
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 150%;
+                            color: #111111;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

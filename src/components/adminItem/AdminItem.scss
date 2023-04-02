@@ -1,0 +1,27 @@
+.adminItem {
+    .product__img {
+        width: 100px;
+    }
+    .adminItem__item {
+        display: flex;
+        margin-top: 5px;
+        p {
+            margin: 0;
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 150%;
+            color: #3f4e65;
+        }
+        span {
+            margin-left: 5px;
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 150%;
+            color: #111111;
+        }
+    }
+}

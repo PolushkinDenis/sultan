@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter';
+font-style: normal;
+background-color: rgb(252, 252, 252);
 }
 
 code {

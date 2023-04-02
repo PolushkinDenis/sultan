@@ -1,24 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Card from './pages/card/Card';
+import Catalog from './pages/catalog/Catalog';
+import Header from './components/header/Header';
+import { Product } from './types/product';
+import ProductCard from './pages/productCard/ProductCard';
+import Admin from './pages/admin/Admin';
+import Footer from './components/footer/Footer';
+
+interface ProductItem {
+  product: Product,
+  count: number
+}
 
 function App() {
+  const localStor = localStorage.getItem('card')
+  const products: ProductItem[] = localStor !== null ? JSON.parse(localStor) : []
+
+  const [cardCount, setCardCount] = useState(products.length)
+  const [cardSum, setCardSum] = useState(0)
+  const [addedToCart, setAddedToCart] = useState(0)
+
+  const onClickBB = () => {
+    setAddedToCart(addedToCart + 1)
+  }
+
+  useEffect(() => {
+    const localStor = localStorage.getItem('card')
+    const products: ProductItem[] = localStor !== null ? JSON.parse(localStor) : []
+    const productsCount = products.reduce((sum, current) => sum + current.count, 0)
+    const totalSum = products.reduce((sum, current) => sum + current.count * current.product.price, 0)
+    setCardSum(totalSum)
+    setCardCount(productsCount)
+  }, [addedToCart])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <BrowserRouter>
+        <Header cardCount={cardCount} cardSum={cardSum}/>
+        <Routes>
+          <Route path='/' element={<Catalog onClick={onClickBB} />} />
+          <Route path='/card' element={<Card onClick={onClickBB}/>} />
+          <Route path='/product/:id' element={<ProductCard onClick={onClickBB}/>} />
+          <Route path='/admin' element={<Admin />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }

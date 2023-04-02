@@ -1,0 +1,39 @@
+.card {
+    max-width: 1370px;
+    margin: 0 auto;
+    h1 {
+        margin: 50px 0;
+    }
+    .horizontalSplitter_card {
+        width: 100%;
+    }
+    .card__createOrder {
+        margin-top: 50px;
+        margin-bottom: 100px;
+        display: flex;
+        justify-content: space-between;
+        .createOrder {
+            width: 192px;
+            height: 59px;
+            border: none;
+            cursor: pointer;
+            background: #ffc85e;
+            border-radius: 79px;
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 17px;
+            color: #ffffff;
+            outline: none;
+        }
+        .totalPrice {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 130%;
+            color: #111111;
+        }
+    }
+}

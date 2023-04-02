@@ -1,0 +1,37 @@
+import { Product } from "./product"
+
+export interface ManufacturersListSelected {
+    name: string,
+    count: number,
+    check: boolean
+}
+
+
+export interface BrandListSelected {
+    name: string,
+    count: number,
+    check: boolean
+}
+
+export interface FilteredProducts {
+    products: Product[]
+    active: boolean
+}
+
+export interface FilteredByType {
+    products: Product[]
+    active: boolean
+}
+
+export interface IFilters {
+    products: Product[],
+    filteredProducts: FilteredProducts,
+    filteredByType: FilteredByType,
+    finalSorting: Product[],
+    manufacturer: ManufacturersListSelected[] | null,
+    brand: BrandListSelected[] | null,
+    type: string | null,
+    priceFrom: number,
+    priceTo: number,
+    sort: string
+}
