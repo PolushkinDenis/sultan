@@ -14,21 +14,7 @@ import arrow_inc from '../../images/arrow_inc.png'
 import arrow_dec from '../../images/arrow_dec.png'
 import horizontalSplitter from '../../images/horizontalSplitter.png'
 import arrow_end from '../../images/arrow__end.png'
-
-const dataSort = [
-    { value: 'body', name: 'Уход за телом' },
-    { value: 'hands', name: 'Уход за руками' },
-    { value: 'legs', name: 'Уход за ногами' },
-    { value: 'face', name: 'Уход за лицом' },
-    { value: 'hair', name: 'Уход за волосами' },
-    { value: 'suntan', name: 'Средства для загара' },
-    { value: 'shaving', name: 'Средства для бритья' },
-    { value: 'gift', name: 'Подарочные наборы' },
-    { value: 'hygiene', name: 'Гигиеническая продукция' },
-    { value: 'mouth', name: 'Гигиена полости рта' },
-    { value: 'paper ', name: 'Бумажная продукция' },
-
-]
+import {dataSort} from '../../data/dataSort'
 
 interface ProductItem {
     product: Product,
@@ -69,8 +55,6 @@ const ProductCard: FC<ProductCardProps> = ({ onClick }) => {
     }
 
     const addToCard = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        //dispatch(cardSlice.actions.addCard({ product, count: 1 }))
-
         const products: ProductItem[] = localStor !== null ? JSON.parse(localStor) : []
 
         //Если localeStorage пустой
@@ -106,7 +90,6 @@ const ProductCard: FC<ProductCardProps> = ({ onClick }) => {
         onClick(e)
     }
 
-    console.log(product)
     //Получаем данные из localStorage или из JSON
     useEffect(() => {
         const localStorageProducts = localStorage.getItem('products')

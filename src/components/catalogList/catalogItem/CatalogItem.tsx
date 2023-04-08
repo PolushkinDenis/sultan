@@ -3,9 +3,6 @@ import './CatalogItem.scss'
 import { Product } from "../../../types/product";
 import weight_img from "../../../images/weight.png"
 import volume_img from "../../../images/volume.png"
-import { useDispatch } from "react-redux";
-import { cardSlice } from "../../../store/reducers/cardSlice";
-import { useAppSelector } from "../../../hooks/redux";
 import { NavLink } from "react-router-dom";
 import cart_btn from '../../../images/cart_btn.png'
 
@@ -20,15 +17,9 @@ interface CatalogItemProps {
 }
 
 const CatalogItem: FC<CatalogItemProps> = ({ product, onClick }) => {
-
     const localStor = localStorage.getItem('card')
 
-    const card = useAppSelector(state => state.cardReducer)
-    const dispatch = useDispatch()
-
     const addProductToCard = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        //dispatch(cardSlice.actions.addCard({ product, count: 1 }))
-
         const products: ProductItem[] = localStor !== null ? JSON.parse(localStor) : []
 
         //Если localeStorage пустой
@@ -59,7 +50,6 @@ const CatalogItem: FC<CatalogItemProps> = ({ product, onClick }) => {
         onClick(e)
     }
 
-
     return (
         <div className="catalogItem">
             <div className="catalogItem__box">
@@ -70,7 +60,6 @@ const CatalogItem: FC<CatalogItemProps> = ({ product, onClick }) => {
                     <img src={product.type === "weight" ? weight_img : volume_img} />
                     <p>{product.size}</p>
                 </div>
-                {/* <NavLink to={`/catalog/${product.barcode}`}>{product.name}</NavLink> */}
                 <NavLink to={`/sultan/product/${product.barcode}`}><p className="product__name">{product.name}</p></NavLink>
                 <div className="product__addition">
                     <div className="addition__title">Штрихкод: <p>{product.barcode}</p></div>

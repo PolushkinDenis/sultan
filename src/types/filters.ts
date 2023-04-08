@@ -1,17 +1,17 @@
 import { Product } from "./product"
 
-export interface ManufacturersListSelected {
+export interface ManufacturersAndBrandListSelected {
     name: string,
     count: number,
     check: boolean
 }
 
 
-export interface BrandListSelected {
-    name: string,
-    count: number,
-    check: boolean
-}
+// export interface BrandListSelected {
+//     name: string,
+//     count: number,
+//     check: boolean
+// }
 
 export interface FilteredProducts {
     products: Product[]
@@ -28,8 +28,8 @@ export interface IFilters {
     filteredProducts: FilteredProducts,
     filteredByType: FilteredByType,
     finalSorting: Product[],
-    manufacturer: ManufacturersListSelected[] | null,
-    brand: BrandListSelected[] | null,
+    manufacturer: ManufacturersAndBrandListSelected[] | null,
+    brand: ManufacturersAndBrandListSelected[] | null,
     type: string | null,
     priceFrom: number,
     priceTo: number,

@@ -1,4 +1,4 @@
-import { IFilters, ManufacturersListSelected, BrandListSelected } from "../../types/filters";
+import { IFilters, ManufacturersAndBrandListSelected, } from "../../types/filters";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { Product } from "../../types/product";
 
@@ -33,31 +33,31 @@ export const filtersSlice = createSlice({
         resetState(state) {
             state = initialState
         },
-        initManufacturer(state, action: PayloadAction<ManufacturersListSelected[]>) {
+        initManufacturer(state, action: PayloadAction<ManufacturersAndBrandListSelected[]>) {
             state.manufacturer?.push(...action.payload)
         },
-        addManufacturer(state, action: PayloadAction<ManufacturersListSelected>) {
+        addManufacturer(state, action: PayloadAction<ManufacturersAndBrandListSelected>) {
             if (state.manufacturer !== null) {
                 const index: number = state.manufacturer.findIndex(el => el.name === action.payload.name)
                 state.manufacturer[index].check = true
             }
         },
-        deleteManufacturer(state, action: PayloadAction<ManufacturersListSelected>) {
+        deleteManufacturer(state, action: PayloadAction<ManufacturersAndBrandListSelected>) {
             if (state.manufacturer !== null) {
                 const index: number = state.manufacturer.findIndex(el => el.name === action.payload.name)
                 state.manufacturer[index].check = false
             }
         },
-        initBrand(state, action: PayloadAction<BrandListSelected[]>) {
+        initBrand(state, action: PayloadAction<ManufacturersAndBrandListSelected[]>) {
             state.brand?.push(...action.payload)
         },
-        addBrand(state, action: PayloadAction<BrandListSelected>) {
+        addBrand(state, action: PayloadAction<ManufacturersAndBrandListSelected>) {
             if (state.brand !== null) {
                 const index: number = state.brand.findIndex(el => el.name === action.payload.name)
                 state.brand[index].check = true
             }
         },
-        deleteBrand(state, action: PayloadAction<BrandListSelected>) {
+        deleteBrand(state, action: PayloadAction<ManufacturersAndBrandListSelected>) {
             if (state.brand !== null) {
                 const index: number = state.brand.findIndex(el => el.name === action.payload.name)
                 state.brand[index].check = false

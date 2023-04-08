@@ -38,8 +38,6 @@ const Card: FC<CardProps> = ({ onClick }) => {
 
     }, [localStor])
 
-    console.log(productList)
-
     const makeOrder = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         setModal(true)
         localStorage.setItem('card', JSON.stringify([]));

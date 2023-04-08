@@ -1,20 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { Product } from "../../types/product";
 import './AdminChangeProduct.scss'
-
-const dataSort = [
-    { value: 'body', name: 'Уход за телом' },
-    { value: 'hands', name: 'Уход за руками' },
-    { value: 'legs', name: 'Уход за ногами' },
-    { value: 'face', name: 'Уход за лицом' },
-    { value: 'hair', name: 'Уход за волосами' },
-    { value: 'suntan', name: 'Средства для загара' },
-    { value: 'shaving', name: 'Средства для бритья' },
-    { value: 'gift', name: 'Подарочные наборы' },
-    { value: 'hygiene', name: 'Гигиеническая продукция' },
-    { value: 'mouth', name: 'Гигиена полости рта' },
-    { value: 'paper', name: 'Бумажная продукция' },
-]
+import { dataSort } from '../../data/dataSort'
 
 interface ListOfChecked {
     value: string,
@@ -108,7 +95,6 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
             const index = filter.findIndex(fltr => fltr === e.target.value)
             newFilters.splice(index, 1);
             setFilter(newFilters)
-
         }
         console.log(newListOfFilter)
         setListOfFilter(newListOfFilter)
@@ -162,7 +148,6 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
                 setAdded(true)
                 localStorage.setItem('products', JSON.stringify(localStorageProductsTypes));
             }
-            //console.log(newProduct)
         }
     }
 
@@ -204,9 +189,6 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
                 })
             })
         }
-        // let uniqueSet = new Set(newListOfFilter);
-        // let uniqueArray = Array.from(uniqueSet).map(JSON.parse(uniqueSet));
-        //console.log(newListOfFilter)
         setListOfFilter(newListOfFilter)
     }, [])
 
@@ -224,8 +206,6 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
 
     if (!visible) return null;
 
-    console.log(added)
-    console.log(title)
     return (
         <div className="modal" onClick={onClose}>
             <div className="modal-dialog" onClick={e => e.stopPropagation()}>
@@ -257,17 +237,13 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
                                 <input type="checkbox" checked={sort.check} value={sort.value} onChange={e => changeListOfFilter(e)} />
                                 <span>{sort.name}</span>
                             </div>
-
                         ))}
                     </div>
-
-
                 </div>
                 <div className="modal__save">
                     <div className="modal__save-error">{error}</div>
                     <div className={added ? "modal__save-added" : "modal__save-notadded"} >{title === "Добавление" ? "Добавлено" : "Изменено"}</div>
                     <button className="modal__save-btn" onClick={saveProduct}>Сохранить</button>
-
                 </div>
             </div>
         </div>

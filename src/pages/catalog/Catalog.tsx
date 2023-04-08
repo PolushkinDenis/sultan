@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 import './Catalog.scss'
-import arrow_inc from '../../images/arrow_inc.png'
 import arrow_end from '../../images/arrow__end.png'
 import Filters from "../../components/filters/Filters";
 import CatalogList from "../../components/catalogList/CatalogList";
@@ -11,21 +10,7 @@ import { useDispatch } from "react-redux";
 import { filtersSlice } from "../../store/reducers/filtersSlice";
 import { useAppSelector } from "../../hooks/redux";
 import { useNavigate } from "react-router-dom";
-
-const dataSort = [
-    { value: 'body', name: 'Уход за телом' },
-    { value: 'hands', name: 'Уход за руками' },
-    { value: 'legs', name: 'Уход за ногами' },
-    { value: 'face', name: 'Уход за лицом' },
-    { value: 'hair', name: 'Уход за волосами' },
-    { value: 'suntan', name: 'Средства для загара' },
-    { value: 'shaving', name: 'Средства для бритья' },
-    { value: 'gift', name: 'Подарочные наборы' },
-    { value: 'hygiene', name: 'Гигиеническая продукция' },
-    { value: 'mouth', name: 'Гигиена полости рта' },
-    { value: 'paper', name: 'Бумажная продукция' },
-
-]
+import {dataSort} from '../../data/dataSort'
 
 const separateSortName = (name: string) => {
     const [fisrtPart, ...secondPart] = name.split(" ")
@@ -43,11 +28,9 @@ interface CatalogProps {
 }
 
 const Catalog: FC<CatalogProps> = ({ onClick }) => {
-
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
-    const finalSorting = useAppSelector(state => state.filterReducer.finalSorting)
     const productsRedux = useAppSelector(state => state.filterReducer.products)
     const filteredProducts = useAppSelector(state => state.filterReducer.filteredProducts)
     const filteredByType = useAppSelector(state => state.filterReducer.filteredByType)
@@ -55,22 +38,6 @@ const Catalog: FC<CatalogProps> = ({ onClick }) => {
     const sotrRedux = useAppSelector(state => state.filterReducer.sort)
 
     const [sorting, setSorting] = useState(sotrRedux)
-    // const filteringProducts = (productsForFiltering: Product[]) => {
-    //     let filteredProducts = [...productsForFiltering]
-    //     if(brand !== null && brand.length !== 0) {
-    //         filteredProducts = products.filter((item) => item.brand === brand[0])
-    //     }
-    //     if(manufacturer !== null && manufacturer.length !== 0) {
-    //         filteredProducts = products.filter((item) => item.manufacturer === manufacturer[0])
-    //     }
-    //     filteredProducts = products.filter((item) => item.price >= priceFrom)
-    //     filteredProducts = products.filter((item) => item.price <= priceTo)
-
-    //     console.log("Фильтрация товаров")
-    //     console.log(filteredProducts)
-    // }
-
-    //Получаем данные из localStorage или из JSON
 
     const onChangeSorting = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSorting(e.target.value)
@@ -79,11 +46,8 @@ const Catalog: FC<CatalogProps> = ({ onClick }) => {
 
     const selectedFilter = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (filterTypeRedux !== e.currentTarget.id) {
-
-
             const selectedFilterType = e.currentTarget.id
             dispatch(filtersSlice.actions.selectType(selectedFilterType))
-
             const sortByType: Product[] = []
 
             //Фильтр только по типу (все имеющиеся товары)
@@ -94,7 +58,6 @@ const Catalog: FC<CatalogProps> = ({ onClick }) => {
                     }
                 })
             })
-
             console.log(sortByType)
             dispatch(filtersSlice.actions.filteredByType(sortByType))
         }
@@ -108,12 +71,10 @@ const Catalog: FC<CatalogProps> = ({ onClick }) => {
         if (productsRedux.length === 0) {
             const localStorageProducts = localStorage.getItem('products')
             if (localStorageProducts === null) {
-                //setProductFilter(products)
                 dispatch(filtersSlice.actions.initState(products))
             }
             else {
                 const productsLocal: Product[] = localStorageProducts !== null ? JSON.parse(localStorageProducts) : []
-                //setProductFilter(productsLocal)
                 if (productsLocal.length === 0) {
                     dispatch(filtersSlice.actions.initState(products))
                 }
@@ -127,17 +88,6 @@ const Catalog: FC<CatalogProps> = ({ onClick }) => {
             }
         }
     }, [filteredProducts, filteredByType])
-
-    // useEffect(() => {
-    //     const localStorageProducts = localStorage.getItem('products')
-    //     if (localStorageProducts === null) {
-    //         filteringProducts(products)
-    //     }
-    //     console.log('useEefect 2')
-
-    // }, [brand, manufacturer, priceFrom, priceTo, type])
-
-    console.log("catalog")
 
     return (
         <div className="catalog">
@@ -168,18 +118,8 @@ const Catalog: FC<CatalogProps> = ({ onClick }) => {
                         </div>
                     ))}
                 </div>
-                {/* <div className="sorting__list sorting__list-mobil">
-                    {dataSort.map((product) => (
-                        <div id={product.value} className={filterTypeRedux === product.value ? "sort__item sort__item-active" : "sort__item sort__item-disable"} key={product.value} onClick={e => selectedFilter(e)}>
-                            {product.name}
-                        </div>
-                    ))}
-                </div> */}
             </div>
-
             <div className="catalog__content catalog__content-desctop catalog__content-mobil">
-                {/* <Filters initProducts={productFilter}/> */}
-                {/* <CatalogList products={productFilter} onClick={onClick} /> */}
                 <Filters />
                 <div className="catalog__title">
                     <div className="title__sort-mobil">
@@ -194,7 +134,6 @@ const Catalog: FC<CatalogProps> = ({ onClick }) => {
                 </div>
                 <CatalogList onClick={onClick} />
             </div>
-
         </div>
     )
 }

@@ -11,8 +11,6 @@ import menu_start from '../../images/menu_start.png'
 import menu_active from '../../images/menu_active.png'
 import card from '../../images/card.png'
 import manager from '../../images/manager.png'
-import { useAppSelector } from "../../hooks/redux";
-import { Product } from "../../types/product";
 import { NavLink } from "react-router-dom";
 import HeaderMenu from "../headerMenu/HeaderMenu";
 
@@ -22,7 +20,6 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ cardCount, cardSum }) => {
-    const [menu, setMenu] = useState(false)
     const [isModal, setModal] = useState(false)
     const onClose = () => setModal(false)
 
@@ -33,21 +30,7 @@ const Header: FC<HeaderProps> = ({ cardCount, cardSum }) => {
         else {
             document.body.style.overflow = "";
         }
-
     }, [isModal])
-    // const cardCount = useAppSelector(state => state.cardReducer.products).length
-
-    // const cardStore = localStorage.getItem('card')
-    // const products: Product[] = cardStore !== null ? JSON.parse(cardStore) : []
-
-    // const [cardCount, setCardCount] = useState(0)
-
-    // console.log(cardStore)
-
-    // useEffect(() => {
-    //     const cardStore = localStorage.getItem('card')
-    //     const products: Product[] = cardStore !== null ? JSON.parse(cardStore) : []
-    // }, [])
 
     return (
         <header className="header">

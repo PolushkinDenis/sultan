@@ -5,41 +5,27 @@ import { useAppSelector } from "../../hooks/redux";
 import { filtersSlice } from "../../store/reducers/filtersSlice";
 import { Product } from "../../types/product";
 import './Filters.scss'
-import ManufacturerList from "./manufacturerList/ManufacturerList";
-import { BrandListSelected, ManufacturersListSelected } from "../../types/filters";
-import BrandsList from "./brandsList/BrandsList";
+import { ManufacturersAndBrandListSelected } from "../../types/filters";
 import deleteBtn from '../../images/deleteCard.png'
 import horizontalSplitterFilter from '../../images/horizontalSplitterFilter.png'
 import arrow_inc from '../../images/arrow_inc.png'
 import arrow_dec from '../../images/arrow_dec.png'
 import arrow_bth_show from '../../images/arrow_bth_show.png'
 import arrow_bth_none from '../../images/arrow_bth_none.png'
-
-// interface FiltersProps {
-//     initProducts: Product[],
-// }
-
-// interface ManufacturersListSelected {
-//     name: string,
-//     count: number,
-//     check: boolean
-// }
-
-
+import DropdownFilter from "./dropdownFilter/DropdownFilter";
 
 const Filters: FC = () => {
     const [manufacturerSearch, setManufacturerSearch] = useState("")
     const [brandSearch, setBrandSearch] = useState("")
 
-    const [initProducts, setInitProducts] = useState<Product[]>([])
     const [priceFrom, setPriceFrom] = useState(0)
     const [priceTo, setPriceTo] = useState(10000)
 
-    const [manufacturers, setManufacturers] = useState<ManufacturersListSelected[]>([])
-    const [manufacturersList, setManufacturersList] = useState<ManufacturersListSelected[]>([])
+    const [manufacturers, setManufacturers] = useState<ManufacturersAndBrandListSelected[]>([])
+    const [manufacturersList, setManufacturersList] = useState<ManufacturersAndBrandListSelected[]>([])
 
-    const [brands, setBrands] = useState<BrandListSelected[]>([])
-    const [brandsList, setBrandsList] = useState<BrandListSelected[]>([])
+    const [brands, setBrands] = useState<ManufacturersAndBrandListSelected[]>([])
+    const [brandsList, setBrandsList] = useState<ManufacturersAndBrandListSelected[]>([])
 
     const productsRedux = useAppSelector(state => state.filterReducer.products)
     const manufacturersRedux = useAppSelector(state => state.filterReducer.manufacturer)
@@ -58,32 +44,10 @@ const Filters: FC = () => {
 
     const selectedFilter = (e: React.MouseEvent<HTMLDivElement>) => {
         if (filterTypeRedux !== e.currentTarget.id) {
-
-
             const selectedFilterType = e.currentTarget.id
             dispatch(filtersSlice.actions.selectType(selectedFilterType))
 
             const sortByType: Product[] = []
-
-            //Если применены основные фильтры
-            // if (sortedProductsRedux.active === true) {
-            //     sortedProductsRedux.products.map(prod => {
-            //         prod.filter.map(filterType => {
-            //             if (filterType === selectedFilterType) {
-            //                 sortByType.push(prod)
-            //             }
-            //         })
-            //     })
-            // }
-            // else { //Фильтр только по типу (все имеющиеся товары)
-            //     productsRedux.map((prod) => {
-            //         prod.filter.map(filterType => {
-            //             if (filterType === selectedFilterType) {
-            //                 sortByType.push(prod)
-            //             }
-            //         })
-            //     })
-            // }
 
             //Фильтр только по типу (все имеющиеся товары)
             productsRedux.map((prod) => {
@@ -93,8 +57,6 @@ const Filters: FC = () => {
                     }
                 })
             })
-
-            console.log(sortByType)
             dispatch(filtersSlice.actions.filteredByType(sortByType))
         }
         else {
@@ -111,25 +73,10 @@ const Filters: FC = () => {
     }
     //Фильтрация по поиску бренда
     const searchBrand = (e: React.ChangeEvent<HTMLInputElement>) => {
-        // if(showAllBrand === false) {
-        //     setBrandSearch(e.target.value)
-        //     console.log(brands.filter(manufacturer => manufacturer.name.includes(e.target.value)))
-        //     let fromBrandsList = brands.filter(brnd => brnd.name.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase()))
-        //     fromBrandsList = fromBrandsList.slice(0, 3)
-        //     setBrandsList(fromBrandsList)
-        // }
-        // else {
-        //     setBrandSearch(e.target.value)
-        //     console.log(brands.filter(manufacturer => manufacturer.name.includes(e.target.value)))
-        //     setBrandsList(brands.filter(brnd => brnd.name.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())))
-        // }
         setBrandSearch(e.target.value)
         console.log(brands.filter(manufacturer => manufacturer.name.includes(e.target.value)))
         setBrandsList(brands.filter(brnd => brnd.name.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())))
-
-
     }
-
     //Ввод цены от
     const changePriceFrom = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (Number(e.target.value) >= 0) {
@@ -173,6 +120,7 @@ const Filters: FC = () => {
                 }
             })
         }
+
         // Если выбраны производители то фильтруем по ним
         if (countOfSelectManufacturers > 0) {
             newProducts.map((prod => {
@@ -211,16 +159,6 @@ const Filters: FC = () => {
             filteredByBrandProducts.push(...newProducts)
         }
 
-        // const mergedArr: Product[] = [...filteredProducts, ...filteredByBrandProducts]
-        // const mergedArrayWithoutRepeat = mergedArr.filter((item, index) => mergedArr.indexOf(item) === index)
-
-        // console.log(mergedArrayWithoutRepeat)
-        //const mergedArrayWithoutRepeat = [...new Set([...mergedArr])]
-
-        console.log(filteredProducts)
-        console.log(filteredByBrandProducts)
-
-
         //Обьединение двух массив (1: сортированный по производителю, 2: сорттированный по бренду)
         const mergedArrayWithoutRepeat: Product[] = []
         filteredProducts.map((byManufactur) => {
@@ -230,8 +168,6 @@ const Filters: FC = () => {
                 }
             })
         })
-
-        console.log(mergedArrayWithoutRepeat)
         dispatch(filtersSlice.actions.filteredByMain(mergedArrayWithoutRepeat))
     }
 
@@ -245,18 +181,13 @@ const Filters: FC = () => {
         setBrandsList(brands)
         dispatch(filtersSlice.actions.resetManufacturer())
         dispatch(filtersSlice.actions.resetBrand())
-
-        //dispatch(filtersSlice.actions.filteredByMain(productsRedux))
         dispatch(filtersSlice.actions.resetFiltered())
-        // Добполнить бренд 
-
     }
 
     useEffect(() => {     // Подсчет количесва производителей
         const localStorageProducts = localStorage.getItem('products')
         if (localStorageProducts === null) {
-            setInitProducts(products)
-            const arrayOfManufacturers: ManufacturersListSelected[] = []
+            const arrayOfManufacturers: ManufacturersAndBrandListSelected[] = []
 
             products.map(product => {
                 const index = arrayOfManufacturers.findIndex(manufacturer => manufacturer.name === product.manufacturer)
@@ -275,7 +206,7 @@ const Filters: FC = () => {
             setManufacturersList(arrayOfManufacturers)
             dispatch(filtersSlice.actions.initManufacturer(arrayOfManufacturers))
 
-            const arrayOfBrand: BrandListSelected[] = []
+            const arrayOfBrand: ManufacturersAndBrandListSelected[] = []
             products.map(product => {
                 const index = arrayOfBrand.findIndex(brand => brand.name === product.brand)
                 if (index == -1) {
@@ -288,15 +219,13 @@ const Filters: FC = () => {
                     arrayOfBrand.push(newBrands)
                 }
             })
-            //console.log(arrayOfBrand)
             setBrands(arrayOfBrand)
             setBrandsList(arrayOfBrand)
             dispatch(filtersSlice.actions.initBrand(arrayOfBrand))
         }
         else {
             const productsLocal: Product[] = localStorageProducts !== null ? JSON.parse(localStorageProducts) : []
-            setInitProducts(productsLocal)
-            const arrayOfManufacturers: ManufacturersListSelected[] = []
+            const arrayOfManufacturers: ManufacturersAndBrandListSelected[] = []
             productsLocal.map(product => {
                 const index = arrayOfManufacturers.findIndex(manufacturer => manufacturer.name === product.manufacturer)
                 if (index == -1) {
@@ -313,7 +242,7 @@ const Filters: FC = () => {
             setManufacturersList(arrayOfManufacturers)
             dispatch(filtersSlice.actions.initManufacturer(arrayOfManufacturers))
 
-            const arrayOfBrand: BrandListSelected[] = []
+            const arrayOfBrand: ManufacturersAndBrandListSelected[] = []
             productsLocal.map(product => {
                 const index = arrayOfBrand.findIndex(brand => brand.name === product.brand)
                 if (index == -1) {
@@ -331,9 +260,6 @@ const Filters: FC = () => {
             dispatch(filtersSlice.actions.initBrand(arrayOfBrand))
         }
     }, [])
-
-    //console.log(manufacturersList)
-    // console.log(initProducts)
 
     return (
         <div className="filters">
@@ -360,12 +286,11 @@ const Filters: FC = () => {
                     <div>
                         {manufacturersList.map(manufacturer => (
                             <div className={!showAllManufacturers ? "manufacturer__list-item" : "manufacturer__list-allItem"} key={manufacturer.name}>
-                                <ManufacturerList manufacturer={manufacturer}  />
+                                <DropdownFilter listFilter={manufacturer} type="manufacturer" />
                             </div>
                         ))}
                     </div>
                     <div className="swoh__all"><button onClick={e => setShowAllManufacturers(!showAllManufacturers)}>Показать все</button><img src={showAllManufacturers ? arrow_dec : arrow_inc} alt="" /></div>
-
                 </div>
                 <img className="horizontalSplitterFilter" src={horizontalSplitterFilter} alt="" />
                 <div className="filters__manufacturer">
@@ -377,11 +302,11 @@ const Filters: FC = () => {
                     <div>
                         {brandsList.map(brand => (
                             <div className={!showAllBrand ? "brands__list-item" : "brands__list-allItem"} key={brand.name}>
-                                <BrandsList brands={brand} />
+                                <DropdownFilter listFilter={brand} type="brand" />
                             </div>
                         ))}
                     </div>
-                    <div className="swoh__all"><button onClick={e => setShowAllBrand(!showAllBrand)}>Показать все</button><img src={ showAllBrand ? arrow_dec : arrow_inc} alt="" /></div>
+                    <div className="swoh__all"><button onClick={e => setShowAllBrand(!showAllBrand)}>Показать все</button><img src={showAllBrand ? arrow_dec : arrow_inc} alt="" /></div>
                 </div>
                 <div className="filters__btns">
                     <button className="btn__show" onClick={applyFilters}>Показать</button>
@@ -401,7 +326,6 @@ const Filters: FC = () => {
                 <div className={filterTypeRedux === "mouth" ? "types selected" : "types"} id="mouth" onClick={e => selectedFilter(e)}>Гигиена полости рта</div>
                 <div className={filterTypeRedux === "paper" ? "types selected" : "types"} id="paper" onClick={e => selectedFilter(e)}>Бумажная продукция</div>
             </div>
-
         </div>
     )
 }

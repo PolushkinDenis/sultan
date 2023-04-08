@@ -6,7 +6,6 @@ import phone_menu from '../../images/phone_menu.png'
 import phone_menu_active from '../../images/phone_menu_active.png'
 import horizontalSplitter from '../../images/horizontalSplitter.png'
 import price_list from '../../images/price_list.png'
-import { NavLink } from "react-router-dom";
 
 interface HeaderMenuProps {
     visible: boolean
@@ -14,7 +13,6 @@ interface HeaderMenuProps {
 }
 
 const HeaderMenu: FC<HeaderMenuProps> = ({ visible = false, onClose }) => {
-
 
     if (!visible) return null;
 
@@ -56,7 +54,6 @@ const HeaderMenu: FC<HeaderMenuProps> = ({ visible = false, onClose }) => {
                         <div className="headerMenu__siteMenu-item">Контакты</div>
                     </div>
                     <button className="headerMenu__price-btn">Прайс-лист<img src={price_list} alt="price list" /></button>
-                    
                 </div>
             </div>
         </div>

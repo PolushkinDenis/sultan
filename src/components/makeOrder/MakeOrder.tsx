@@ -7,10 +7,7 @@ interface MakeOrder {
     onClose: () => void
 }
 
-const MakeOrder: FC<MakeOrder> = ({
-    visible = false,
-    onClose,
-}) => {
+const MakeOrder: FC<MakeOrder> = ({ visible = false, onClose }) => {
 
     const onKeydown = ({ key }: KeyboardEvent) => {
         switch (key) {
@@ -37,7 +34,7 @@ const MakeOrder: FC<MakeOrder> = ({
                     </span>
                 </div>
                 <div className="modal-body-order">
-                    <img src={makeOrder} alt="Готово"/>
+                    <img src={makeOrder} alt="Готово" />
                     <div className="modal-body_main">Спасибо за заказ</div>
                     <div className="modal-body_secondary">Наш менеджер свяжется с вами в ближайшее время</div>
                 </div>

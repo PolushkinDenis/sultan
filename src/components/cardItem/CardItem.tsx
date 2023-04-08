@@ -5,9 +5,7 @@ import volume_img from '../../images/volume.png'
 import separatorCardItem from '../../images/separatorCardItem.png'
 import deleteCard from '../../images/deleteCard.png'
 import horizontalSplitter_card from "../../images/horizontalSplitter_card.png"
-
 import "./CardItem.scss"
-import { useNavigate } from "react-router-dom";
 
 interface ProductItem {
     product: Product,
@@ -71,7 +69,6 @@ const CardItem: FC<CardItemProps> = ({ product, onClick }) => {
                         <div className="cardItem__description-description">{product.product.description}</div>
                     </div>
                 </div>
-
                 <div className="cardItem__content-second">
                     <div className="cardItem__count-changing">
                         <img className="cardItem__count-separatorStart" src={separatorCardItem} />
@@ -89,7 +86,6 @@ const CardItem: FC<CardItemProps> = ({ product, onClick }) => {
             </div>
             <img className="horizontalSplitter_card" src={horizontalSplitter_card} alt="" />
         </>
-
     )
 }
 

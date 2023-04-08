@@ -29,9 +29,7 @@ const Admin: FC = () => {
         filter: []
     }
 
-
     const addProduct = () => {
-        console.log("ASDASd")
         setModal(true)
     }
 
@@ -55,11 +53,9 @@ const Admin: FC = () => {
         }
     }, [localStor])
 
-    console.log(productsAdmin)
-    console.log(isModal)
     return (
         <div className="admin">
-             <div className="admin__navigate-desctop">
+            <div className="admin__navigate-desctop">
                 <Breadcrumbs links={[{ link: "/sultan/admin", name: "Админка" }]} />
             </div>
             <div className="admin__navigate-mobil">
@@ -70,9 +66,8 @@ const Admin: FC = () => {
                 <div className="admin__start">
                     <div>Нет добавленных товаров</div>
                     <div>Добавить товары из JSON ?</div>
-                        <button onClick={initProductsFromJSON}>ДА</button>
-                        <button onClick={addProduct}>Добавить новый товар</button>
-
+                    <button onClick={initProductsFromJSON}>ДА</button>
+                    <button onClick={addProduct}>Добавить новый товар</button>
                     <AdminChangeProduct
                         title="Добавление"
                         visible={isModal}

@@ -10,8 +10,6 @@ interface AdminItemProps {
 }
 
 const AdminItem: FC<AdminItemProps> = ({ product, onClick }) => {
-    const localStor = localStorage.getItem('products')
-
     const [isModal, setModal] = useState(false)
     const onClose = () => setModal(false)
 
