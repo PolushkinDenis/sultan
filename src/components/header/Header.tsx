@@ -76,7 +76,7 @@ const Header: FC<HeaderProps> = ({ cardCount, cardSum }) => {
                 <img className="manager" src={manager} alt="manager" />
                 <button className="header__price-btn">Прайс-лист<img src={price_list} alt="price list" /></button>
                 <div className="header__card">
-                    <NavLink to="/sultan/card"><img src={card} alt="card" />
+                    <NavLink data-testid="card-link" to="/sultan/card"><img src={card} alt="card" />
                         <div className="header__card-count">{cardCount}</div>
                     </NavLink>
                 </div>
@@ -95,7 +95,7 @@ const Header: FC<HeaderProps> = ({ cardCount, cardSum }) => {
                     <img src={search_mobile} alt="" />
                     <span>Поиск</span>
                 </div>
-                <NavLink to="/sultan/admin">Админка</NavLink>
+                <NavLink data-testid="admin-link" to="/sultan/admin">Админка</NavLink>
             </div>
             <hr className="hr-third"/>
             <div className="menu__show">

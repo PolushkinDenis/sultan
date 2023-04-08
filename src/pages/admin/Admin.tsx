@@ -54,7 +54,7 @@ const Admin: FC = () => {
     }, [localStor])
 
     return (
-        <div className="admin">
+        <div className="admin" data-testid="admin-page">
             <div className="admin__navigate-desctop">
                 <Breadcrumbs links={[{ link: "/sultan/admin", name: "Админка" }]} />
             </div>

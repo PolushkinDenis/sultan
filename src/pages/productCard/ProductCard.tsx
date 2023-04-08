@@ -123,7 +123,7 @@ const ProductCard: FC<ProductCardProps> = ({ onClick }) => {
     }, [])
 
     return (
-        <div className="productCard">
+        <div className="productCard" data-testid="productCard-page">
             {product && (
                 <div>
                     <div className="productCard__navigate-desctop">

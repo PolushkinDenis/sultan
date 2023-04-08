@@ -15,8 +15,8 @@ interface BreadcrumbsProps {
 const Breadcrumbs: FC<BreadcrumbsProps> = ({ links }) => {
 
     return (
-        <div className="breadcrumbs">
-            <NavLink to="/sultan">Главная</NavLink>
+        <div className="breadcrumbs" data-testid="breadcrumbs-page">
+            <NavLink data-testid="back-link" to="/sultan">Главная</NavLink>
             {links.map(link => (
                 <div className="breadcrumbs__item" key={link.name}>
                     <img src={separator} />

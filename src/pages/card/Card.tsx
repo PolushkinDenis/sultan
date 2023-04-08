@@ -45,7 +45,7 @@ const Card: FC<CardProps> = ({ onClick }) => {
     }
 
     return (
-        <div className="card">
+        <div className="card" data-testid="card-page">
             <div className="card__navigate-desctop">
                 <Breadcrumbs links={[{ link: '/sultan/card', name: 'Козина' }]} />
             </div>
