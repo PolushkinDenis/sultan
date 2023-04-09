@@ -73,7 +73,7 @@ const CardItem: FC<CardItemProps> = ({ product, onClick }) => {
                     <div className="cardItem__count-changing">
                         <img className="cardItem__count-separatorStart" src={separatorCardItem} />
                         <button onClick={decCountOfProduct}>-</button>
-                        <div className="cardItem__count-count">{countOfProduct}</div>
+                        <div className="cardItem__count-count" data-testid="count-product">{countOfProduct}</div>
                         <button onClick={incCountOfProduct}>+</button>
                         <img className="cardItem__count-separatorEnd" src={separatorCardItem} />
                     </div>
@@ -81,7 +81,7 @@ const CardItem: FC<CardItemProps> = ({ product, onClick }) => {
                         {product.product.price * countOfProduct} ₸
                         <img className="cardItem__separator" src={separatorCardItem} />
                     </div>
-                    <button onClick={deleteProduct} className="cardItem__delete"><img src={deleteCard} alt="delete" /></button>
+                    <button onClick={deleteProduct} data-testid="delete-btn" className="cardItem__delete"><img src={deleteCard} alt="delete" /></button>
                 </div>
             </div>
             <img className="horizontalSplitter_card" src={horizontalSplitter_card} alt="" />

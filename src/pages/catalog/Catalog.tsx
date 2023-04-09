@@ -94,11 +94,11 @@ const Catalog: FC<CatalogProps> = ({ onClick }) => {
             <div className="catalog__navigate-desctop">
                 <Breadcrumbs links={[{ link: "/sultan", name: "Каталог" }]} />
             </div>
-            {/* <div className="catalog__navigate-mobil">
+            <div className="catalog__navigate-mobil">
                 <button onClick={() => navigate(-1)}><img src={arrow_end} /></button>
                 <div>Назад</div>
-            </div> */}
-            {/* <div className="catalog__title">
+            </div>
+            <div className="catalog__title">
                 <h1>Каталог</h1>
                 <div className="title__sort title__sort-desctop">
                     <div className="title">Сортировка:</div>
@@ -109,8 +109,8 @@ const Catalog: FC<CatalogProps> = ({ onClick }) => {
                         <option value="price-inc">Цена по возрастанию</option>
                     </select>
                 </div>
-            </div> */}
-            {/* <div>
+            </div>
+            <div>
                 <div className="sorting__list sorting__list-desctop">
                     {dataSort.map((product) => (
                         <div id={product.value} className={filterTypeRedux === product.value ? "sort__item sort__item-active" : "sort__item sort__item-disable"} key={product.value} onClick={e => selectedFilter(e)}>
@@ -118,9 +118,9 @@ const Catalog: FC<CatalogProps> = ({ onClick }) => {
                         </div>
                     ))}
                 </div>
-            </div> */}
+            </div>
             <div className="catalog__content catalog__content-desctop catalog__content-mobil">
-                {/* <Filters /> */}
+                <Filters />
                 <div className="catalog__title">
                     <div className="title__sort-mobil">
                         <div className="title">Сортировка:</div>

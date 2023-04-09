@@ -99,4 +99,8 @@ export const filtersSlice = createSlice({
     }
 })
 
+export const {addBrand, addFinalFiltered, addManufacturer, changeSort, deleteBrand, deleteManufacturer,
+filteredByMain, filteredByType, initBrand, initManufacturer, initState, resetBrand, resetFiltered, 
+resetFilteredByType, resetManufacturer, resetState, selectType} = filtersSlice.actions
+
 export default filtersSlice.reducer
