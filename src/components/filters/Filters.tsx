@@ -280,7 +280,7 @@ const Filters: FC = () => {
                 <div className="filters__manufacturer">
                     <h3>Производитель</h3>
                     <div className="manufacturer__search">
-                        <input className="search-input" type="text" placeholder="Поиск..." value={manufacturerSearch} onChange={e => searchManufacturer(e)} />
+                        <input data-testid="manufacturer_search" className="search-input" type="text" placeholder="Поиск..." value={manufacturerSearch} onChange={e => searchManufacturer(e)} />
                         <input className="search-button" type="button" />
                     </div>
                     <div>
@@ -309,7 +309,7 @@ const Filters: FC = () => {
                     <div className="swoh__all"><button onClick={e => setShowAllBrand(!showAllBrand)}>Показать все</button><img src={showAllBrand ? arrow_dec : arrow_inc} alt="" /></div>
                 </div>
                 <div className="filters__btns">
-                    <button className="btn__show" onClick={applyFilters}>Показать</button>
+                    <button data-testid="btn-show" className="btn__show" onClick={applyFilters}>Показать</button>
                     <button className="btn__delete" onClick={deleteFilters}><img src={deleteBtn} alt="delete" /></button>
                 </div>
             </div>

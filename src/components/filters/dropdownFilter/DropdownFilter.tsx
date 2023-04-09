@@ -52,8 +52,8 @@ const DropdownFilter: FC<DropdownFilterProps> = ({ type, listFilter }) => {
     return (
         <>
             {listFilterRedux && (
-                <div className="dropdownFilter">
-                    <input type="checkbox" checked={listFilterRedux?.check} onChange={selectDropdownFilter}></input>
+                <div className="dropdownFilter" data-testid={`dropdown-component_${listFilter.name}}`}>
+                    <input data-testid={`dropdown-checkbox-${listFilter.name}`} type="checkbox" checked={listFilterRedux?.check} onChange={selectDropdownFilter}></input>
                     <div className="dropdownFilter-name">{listFilter.name}</div>
                     <div className="dropdownFilter-count">({listFilter.count})</div>
                 </div>

@@ -26,7 +26,6 @@ describe("Test Card page", () => {
                 <Card onClick={onClickTest} />
             </MemoryRouter>
         )
-
         expect(screen.getByText('-')).toBeInTheDocument()
         expect(screen.getByText('+')).toBeInTheDocument()
         expect(screen.getByTestId('count-product')).toContainHTML("1")

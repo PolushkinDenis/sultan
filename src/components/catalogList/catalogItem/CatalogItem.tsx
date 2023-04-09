@@ -69,7 +69,7 @@ const CatalogItem: FC<CatalogItemProps> = ({ product, onClick }) => {
                 </div>
                 <div className="catalogItem__box-toCard">
                     <div>{product.price} ₸</div>
-                    <button className="addToCard-btn" onClick={e => addProductToCard(e)}>В корзину <img src={cart_btn}/></button>
+                    <button className="addToCard-btn" data-testid="add-btn" onClick={e => addProductToCard(e)}>В корзину <img src={cart_btn}/></button>
                 </div>
             </div>
         </div>
