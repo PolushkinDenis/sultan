@@ -66,8 +66,8 @@ const Admin: FC = () => {
                 <div className="admin__start">
                     <div>Нет добавленных товаров</div>
                     <div>Добавить товары из JSON ?</div>
-                    <button onClick={initProductsFromJSON}>ДА</button>
-                    <button onClick={addProduct}>Добавить новый товар</button>
+                    <button data-testid="add_JSON" onClick={initProductsFromJSON}>ДА</button>
+                    <button data-testid="add_new-product" onClick={addProduct}>Добавить новый товар</button>
                     <AdminChangeProduct
                         title="Добавление"
                         visible={isModal}

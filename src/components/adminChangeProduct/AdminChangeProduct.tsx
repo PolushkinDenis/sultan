@@ -216,7 +216,7 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
                 </div>
                 <div className="modal__title">{title}</div>
                 <div className="modal-body">
-                    <div className="item"><p>Название</p><input type="text" value={name} onChange={e => changeName(e)} /></div>
+                    <div className="item"><p>Название</p><input type="text" placeholder="Название" value={name} onChange={e => changeName(e)} /></div>
                     <div className="item">
                         <p>Тип размера</p>
                         <select value={type} onChange={e => changeType(e)}>
@@ -224,26 +224,26 @@ const AdminChangeProduct: FC<AdminChangeProductProps> = ({
                             <option value="volume">Объем</option>
                         </select>
                     </div>
-                    <div className="item"><p>Размер</p><input type="text" value={size} onChange={e => setSize(e.target.value)} /></div>
-                    <div className="item"><p>Штрихкод</p><input type="text" value={barcode} onChange={e => changeBarcode(e)} /></div>
-                    <div className="item"><p>Производитель</p><input type="text" value={manufacturer} onChange={e => setManufacturer(e.target.value)} /></div>
-                    <div className="item"><p>Бренд</p><input type="text" value={brand} onChange={e => setBrand(e.target.value)} /></div>
-                    <div className="item"><p>Описание</p><input type="text" value={description} onChange={e => setDescription(e.target.value)} /></div>
-                    <div className="item"><p>Цена</p><input type="text" value={price} onChange={e => changePrice(e)} /></div>
-                    <div className="item"><p>Url картинки</p><input type="text" value={url} onChange={e => setUrl(e.target.value)} /></div>
+                    <div className="item"><p>Размер</p><input data-testid="size" type="text" placeholder="Размер" value={size} onChange={e => setSize(e.target.value)} /></div>
+                    <div className="item"><p>Штрихкод</p><input type="text" placeholder="Штрихкод" value={barcode} onChange={e => changeBarcode(e)} /></div>
+                    <div className="item"><p>Производитель</p><input type="text" placeholder="Производитель" value={manufacturer} onChange={e => setManufacturer(e.target.value)} /></div>
+                    <div className="item"><p>Бренд</p><input type="text" value={brand} placeholder="Бренд" onChange={e => setBrand(e.target.value)} /></div>
+                    <div className="item"><p>Описание</p><input type="text" value={description} placeholder="Описание" onChange={e => setDescription(e.target.value)} /></div>
+                    <div className="item"><p>Цена</p><input type="text" data-testid="price" value={price} placeholder="Цена" onChange={e => changePrice(e)} /></div>
+                    <div className="item"><p>Url картинки</p><input type="text" value={url} placeholder="Url" onChange={e => setUrl(e.target.value)} /></div>
                     <div>
                         {listOfFilter.map(sort => (
                             <div key={sort.value}>
-                                <input type="checkbox" checked={sort.check} value={sort.value} onChange={e => changeListOfFilter(e)} />
+                                <input data-testid={`checkbox_${sort.value}`} type="checkbox" checked={sort.check} value={sort.value} onChange={e => changeListOfFilter(e)} />
                                 <span>{sort.name}</span>
                             </div>
                         ))}
                     </div>
                 </div>
                 <div className="modal__save">
-                    <div className="modal__save-error">{error}</div>
+                    <div data-testid="error" className="modal__save-error">{error}</div>
                     <div className={added ? "modal__save-added" : "modal__save-notadded"} >{title === "Добавление" ? "Добавлено" : "Изменено"}</div>
-                    <button className="modal__save-btn" onClick={saveProduct}>Сохранить</button>
+                    <button data-testid="add-new-product" className="modal__save-btn" onClick={saveProduct}>Сохранить</button>
                 </div>
             </div>
         </div>
