@@ -1,6 +1,6 @@
 <h1>Интернет магазин Sultan.</h1>
 <p>Написанный на React, с использованием Redux toolkit, React-router-dom, Sass. Тесты написаны на Jest</p>
-<p>Github pages: <a target="_blank" href="https://polushkindenis.github.io/sultan/">Sultan</a></p>
+<p>Github pages: <a href="https://polushkindenis.github.io/sultan/" target="_blank">Sultan</a></p>
 
 <p>На главной странице представлен каталог товаров. Имеется возможность фильтрации товаров по производителю и бренду,  а также по типу товара. Возможность сортировки по цене и наименованию.</p>
 <img src="https://github.com/PolushkinDenis/sultan/blob/main/readme/sultan_main.jpg"/>
