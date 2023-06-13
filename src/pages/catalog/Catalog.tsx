@@ -30,7 +30,6 @@ interface CatalogProps {
 const Catalog: FC<CatalogProps> = ({ onClick }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate();
-
     const productsRedux = useAppSelector(state => state.filterReducer.products)
     const filteredProducts = useAppSelector(state => state.filterReducer.filteredProducts)
     const filteredByType = useAppSelector(state => state.filterReducer.filteredByType)
@@ -49,7 +48,6 @@ const Catalog: FC<CatalogProps> = ({ onClick }) => {
             const selectedFilterType = e.currentTarget.id
             dispatch(filtersSlice.actions.selectType(selectedFilterType))
             const sortByType: Product[] = []
-
             //Фильтр только по типу (все имеющиеся товары)
             productsRedux.map((prod) => {
                 prod.filter.map(filterType => {

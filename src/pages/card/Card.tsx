@@ -44,6 +44,7 @@ const Card: FC<CardProps> = ({ onClick }) => {
         onClick(e)
     }
 
+    
     return (
         <div className="card" data-testid="card-page">
             <div className="card__navigate-desctop">

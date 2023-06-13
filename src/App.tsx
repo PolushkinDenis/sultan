@@ -26,6 +26,7 @@ function App() {
     setAddedToCart(addedToCart + 1)
   }
 
+  
   useEffect(() => {
     const localStor = localStorage.getItem('card')
     const products: ProductItem[] = localStor !== null ? JSON.parse(localStor) : []
